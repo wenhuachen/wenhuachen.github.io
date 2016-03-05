@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Jonathan‘s Personal Blog</title>
+  <subtitle>Stay Hungry, Stay Foolish</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="wenhuachen.github.io/"/>
+  <updated>2016-03-05T06:24:44.000Z</updated>
+  <id>wenhuachen.github.io/</id>
+  
+  <author>
+    <name>Jonathan Chen</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2016 Plan</title>
+    <link href="wenhuachen.github.io/2016/03/05/2016plan/"/>
+    <id>wenhuachen.github.io/2016/03/05/2016plan/</id>
+    <published>2016-03-05T04:38:21.000Z</published>
+    <updated>2016-03-05T06:24:44.000Z</updated>
+    
+    <content type="html">&lt;p&gt;本计划着过完春节回来工作后，便开始博客的搭建。但由于自己的拖延症，直到现在才搭建完成，博客的主体功能已经弄好了，剩下的细节在后面逐渐完善。对于自己的第一篇博文，我打算写写自己 2016 年的计划，看看到年末的时候是否全部完成。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;工作&quot;&gt;&lt;a href=&quot;#工作&quot; class=&quot;headerlink&quot; title=&quot;工作&quot;&gt;&lt;/a&gt;工作&lt;/h2&gt;&lt;p&gt;在现在公司的工作中，虽然可以学到在平常学习中所学不到的知识，提升自己的技术水平，但对于公司的整个工作氛围却并不是十分喜欢，官僚化太过严重；当然薪资也是一个很大的问题，每月公司所付的薪水并不能够很好的改善现在的生活和娱乐，同时父母也对我的生活环境有所担忧。所以今年的工作计划是跳槽成功。&lt;/p&gt;
+&lt;h2 id=&quot;生活&quot;&gt;&lt;a href=&quot;#生活&quot; class=&quot;headerlink&quot; title=&quot;生活&quot;&gt;&lt;/a&gt;生活&lt;/h2&gt;&lt;p&gt;自从去年毕业参加工作，如今已经8个多月了，在非工作的时间段里，做了太多无意义的消遣，感觉自己有点混吃等死。从现在开始，希望自己可以做一些对提升自己技术水平和对自己未来有意义的事，不再浪费时间：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;能力提升：&lt;br&gt;持续的在hihocoder上进行编程算法的练习。同时每完成一个算法题，便将自己在解决问题中学到的知识，遇到的问题，总结出来，发布到博客上（现在已经完成了三道题，最近要将这三道题的文章尽快完成）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Swift 学习：&lt;br&gt;很早以前就有进行 iOS 开发的想法，但都没有长久的坚持下去。去年初跟随斯坦福大学的「&lt;a href=&quot;https://itunesu.itunes.apple.com/WebObjects/LZDirectory.woa/ra/directory/courses/733644550/feed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Developing iOS 7 Apps for iPhone and iPad&lt;/a&gt;」课程学习了 Objective-C 语言，以及如何使用该语言开发 iOS 程序。但在完成课程的学习后去并没有继续坚持学习和进行自主的 iOS 程序开发，导致当初学的知识基本已经还回去了。今年的计划是进行 Swift 语言的学习，同时在完成相应语言的学习后，进行App的开发，争取今年有一款自己开发的程序上架。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;理财实践：&lt;br&gt;在平常进行理财知识的学习，同时进行相应的实践，提升自己的理财水平。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;对于自己 2016 年的计划，差不多就是这么多。自己在年末的时候一定要完成全部的计划。根据自己这一年的表现，决定自己的人生到底要怎么如何去走。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本计划着过完春节回来工作后，便开始博客的搭建。但由于自己的拖延症，直到现在才搭建完成，博客的主体功能已经弄好了，剩下的细节在后面逐渐完善。对于自己的第一篇博文，我打算写写自己 2016 年的计划，看看到年末的时候是否全部完成。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="随笔" scheme="wenhuachen.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="年度计划" scheme="wenhuachen.github.io/tags/%E5%B9%B4%E5%BA%A6%E8%AE%A1%E5%88%92/"/>
+    
+      <category term="随笔" scheme="wenhuachen.github.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+</feed>
