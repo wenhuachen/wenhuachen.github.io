@@ -43,7 +43,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法,hihicoder,Trie树," />
 
 
 
@@ -61,15 +61,25 @@
 
 
 
-<meta name="description" content="Stay Hungry, Stay Foolish">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jonathan‘s Personal Blog">
-<meta property="og:url" content="wenhuachen.github.io/index.html">
+<meta name="description" content="说明这道题是 Trie 树的问题，Trie 树也称为字典数，Wikipedia对 Trie 树的解释是: 
+
+在计算机科学中，trie，又称前缀树或字典樹，是一种有序树，用于保存关联数组，其中的键通常是字符串。
+trie树常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hihocoder ＃1014">
+<meta property="og:url" content="wenhuachen.github.io/2016/03/06/algorithm-1014/index.html">
 <meta property="og:site_name" content="Jonathan‘s Personal Blog">
-<meta property="og:description" content="Stay Hungry, Stay Foolish">
+<meta property="og:description" content="说明这道题是 Trie 树的问题，Trie 树也称为字典数，Wikipedia对 Trie 树的解释是: 
+
+在计算机科学中，trie，又称前缀树或字典樹，是一种有序树，用于保存关联数组，其中的键通常是字符串。
+trie树常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能。">
+<meta property="og:updated_time" content="2016-03-06T08:23:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jonathan‘s Personal Blog">
-<meta name="twitter:description" content="Stay Hungry, Stay Foolish">
+<meta name="twitter:title" content="hihocoder ＃1014">
+<meta name="twitter:description" content="说明这道题是 Trie 树的问题，Trie 树也称为字典数，Wikipedia对 Trie 树的解释是: 
+
+在计算机科学中，trie，又称前缀树或字典樹，是一种有序树，用于保存关联数组，其中的键通常是字符串。
+trie树常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能。">
 
 
 
@@ -87,7 +97,7 @@
   };
 </script>
 
-  <title> Jonathan‘s Personal Blog </title>
+  <title> hihocoder ＃1014 | Jonathan‘s Personal Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -115,9 +125,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,15 +256,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-
-    
-      
 
   
   
@@ -276,138 +278,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/03/06/algorithm-1015/" itemprop="url">
-                  hihocoder ＃1015
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-06T16:26:28+08:00" content="2016-03-06">
-              2016-03-06
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/06/algorithm-1015/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/06/algorithm-1015/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/03/06/algorithm-1015/" class="leancloud_visitors" data-flag-title="hihocoder ＃1015">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>这是一个考察 KMP 算法的题。KMP 算法的全称是「克努斯-莫里斯-普拉特算法」。Wikipedia 对<a href="https://zh.wikipedia.org/wiki/%E5%85%8B%E5%8A%AA%E6%96%AF-%E8%8E%AB%E9%87%8C%E6%96%AF-%E6%99%AE%E6%8B%89%E7%89%B9%E7%AE%97%E6%B3%95"> KMP 算法</a>的解释是：</p>
-<blockquote>
-<p>在计算机科学中，Knuth-Morris-Pratt 字符串查找算法（常简称为“KMP算法”）可在一个主“文本字符串”S内查找一个“词”W的出现位置。此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/06/algorithm-1015/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/06/algorithm-1014/" itemprop="url">
-                  hihocoder ＃1014
-                </a>
+                hihocoder ＃1014
               
             
           </h1>
@@ -481,294 +352,81 @@
       
 
       
-        
-          <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>这道题是 Trie 树的问题，Trie 树也称为字典数，Wikipedia对<a href="https://zh.wikipedia.org/wiki/Trie"> Trie 树</a>的解释是: </p>
+        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>这道题是 Trie 树的问题，Trie 树也称为字典数，Wikipedia对<a href="https://zh.wikipedia.org/wiki/Trie" target="_blank" rel="external"> Trie 树</a>的解释是: </p>
 <blockquote>
 <p>在计算机科学中，trie，又称前缀树或字典樹，是一种有序树，用于保存关联数组，其中的键通常是字符串。</p>
-<p>trie树常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/06/algorithm-1014/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+<p>trie树常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能。<br><a id="more"></a></p>
+</blockquote>
+<p>在这道题目里，目的是要求出在一个字典里，你所期望的字符串出现的次数。通过 Trie 树，可以十分方便的获得你所期望的字符串出现的次数：因为一个字符串的所有子树都包含该字符串。为了减少查找次数时所耗费的时间，可以在建立 Trie 树的同时计算每个不同的子树的子树个数。如题目中所给的提示：</p>
+<blockquote>
+<p>不妨称以T为根的子树中标记节点的个数为L[T]，既然我要统计某个L[T1]，，而这个结点是不确定的，我有没有办法一次性把所有结点的L[T]求出来呢？</p>
+<p>我在最开始置所有L[T]=0，然后每次添加一个新的单词的时候，都将它经过的所有结点的L[T]全部+1，这样我构建完这棵Trie树的时候，我也就能够同时统计到所有L[T]了。</p>
+</blockquote>
+<h2 id="Java-语言实现"><a href="#Java-语言实现" class="headerlink" title="Java 语言实现"></a>Java 语言实现</h2><p>我定义了一个类，其中包含建立该 Trie 树时，各个结点所要用到的存储结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Letter &#123;</span><br><span class="line">	char letter;</span><br><span class="line">	int subTreeCount;</span><br><span class="line">	Letter[] next = new Letter[26];</span><br><span class="line">	Letter() &#123;</span><br><span class="line">		subTreeCount = 0;</span><br><span class="line">		for(int i=0; i&lt;26; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			next[i] = null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	Letter(char newInsert) &#123;</span><br><span class="line">		letter = newInsert;</span><br><span class="line">		subTreeCount = 0;</span><br><span class="line">		for(int i=0; i&lt;26; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			next[i] = null;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个类里，我定义了两个构造方法，第一个在创建根结点的时候使用，第二个在创建各个子结点的时候使用，每个结点里存储了子树的数目和该结点所表示的字符。</p>
+<p>在该程序中最重要的两个方法便是 Trie 树的建立以及查找，完成了这两个方法，也就相当于完成了这个程序，下面介绍这两个程序。</p>
+<p>Tire 树建立：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String word = scanf.nextLine();</span><br><span class="line">Letter findLetter = dictionary;</span><br><span class="line">for(int j=0; j&lt;word.length(); j++)</span><br><span class="line">&#123;</span><br><span class="line">	int k = word.charAt(j) - &apos;a&apos;;</span><br><span class="line">	if(findLetter.next[k] == null)</span><br><span class="line">	&#123;</span><br><span class="line">		Letter insertLetter = new Letter(word.charAt(j));</span><br><span class="line">		findLetter.next[k] = insertLetter;</span><br><span class="line">	&#125;</span><br><span class="line">	findLetter = findLetter.next[k];</span><br><span class="line">	findLetter.subTreeCount++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在读取了所需要加入 Tire 树的单词后，一次读入单词内的每一个字符，如果该字符没有存入到 Tire 树的话，便将字符存入树中相应的结点里。同时在建立树的过程中计算相应结点子树的个数，最终完成 Tire 树的建立。</p>
+<p>Tire 树的查找：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">searchLetter = dictionary;</span><br><span class="line">String word = scanf.nextLine();</span><br><span class="line">for(int j=0; j&lt;word.length(); j++)</span><br><span class="line">&#123;</span><br><span class="line">	int k = word.charAt(j) - &apos;a&apos;;</span><br><span class="line">	if(searchLetter.next[k] == null)</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(0);</span><br><span class="line">		break;</span><br><span class="line">	&#125;</span><br><span class="line">	searchLetter = searchLetter.next[k];		</span><br><span class="line">	if(j == word.length()-1)</span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(searchLetter.subTreeCount);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于在建立树时已经计算了各个结点的子树的个数，所以查找字符串的个数十分的简单。获得要查找的字符串后，对整个 Tire 树从根结点开始查找，若找到这个字符串，便输出该字符串所出现的次数；若没有找到这个字符串，便输出查找结果为0。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过 Tire 树，在查找某个所需的字符串时，可以简化对整个十分庞大的数据源的查找。减少遍历查找整个数据源所耗费的时间。就像 Wikipedia 里所说的，用于搜索的提示。</p>
+
       
     </div>
 
     <div>
       
+        
+      
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/06/c-language-summary/" itemprop="url">
-                  C language
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-06T14:00:01+08:00" content="2016-03-06">
-              2016-03-06
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/语言学习/" itemprop="url" rel="index">
-                    <span itemprop="name">语言学习</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
-
+            <a href="/tags/hihicoder/" rel="tag">#hihicoder</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/06/c-language-summary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/06/c-language-summary/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/Trie树/" rel="tag">#Trie树</a>
           
-
-          
-
-          
-          
-             <span id="/2016/03/06/c-language-summary/" class="leancloud_visitors" data-flag-title="C language">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>这个文章我会持续的更新，主要是记录自己在开放的过程中所遇到的各种问题，所犯的各种错误，学习到的各种技巧等等。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/06/c-language-summary/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/06/c-language-summary/" rel="next" title="C language">
+                <i class="fa fa-chevron-left"></i> C language
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
+              <a href="/2016/03/06/algorithm-1015/" rel="prev" title="hihocoder ＃1015">
+                hihocoder ＃1015 <i class="fa fa-chevron-right"></i>
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/03/05/2016plan/" itemprop="url">
-                  2016 Plan
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-05T12:38:21+08:00" content="2016-03-05">
-              2016-03-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/05/2016plan/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/05/2016plan/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/03/05/2016plan/" class="leancloud_visitors" data-flag-title="2016 Plan">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>本计划着过完春节回来工作后，便开始博客的搭建。但由于自己的拖延症，直到现在才搭建完成，博客的主体功能已经弄好了，剩下的细节在后面逐渐完善。对于自己的第一篇博文，我打算写写自己 2016 年的计划，看看到年末的时候是否全部完成。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/05/2016plan/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
 
-  </section>
-
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -776,6 +434,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/06/algorithm-1014/"
+           data-title="hihocoder ＃1014" data-url="wenhuachen.github.io/2016/03/06/algorithm-1014/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -795,8 +461,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/iPortrait.jpg"
@@ -870,6 +545,23 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-语言实现"><span class="nav-number">2.</span> <span class="nav-text">Java 语言实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
       
 
     </div>
@@ -952,6 +644,167 @@
   
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 

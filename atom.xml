@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="wenhuachen.github.io/"/>
-  <updated>2016-03-05T06:24:44.000Z</updated>
+  <updated>2016-03-06T12:28:50.000Z</updated>
   <id>wenhuachen.github.io/</id>
   
   <author>
@@ -16,17 +16,157 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hihocoder ＃1015</title>
+    <link href="wenhuachen.github.io/2016/03/06/algorithm-1015/"/>
+    <id>wenhuachen.github.io/2016/03/06/algorithm-1015/</id>
+    <published>2016-03-06T08:26:28.000Z</published>
+    <updated>2016-03-06T12:28:50.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;这是一个考察 KMP 算法的题。KMP 算法的全称是「克努斯-莫里斯-普拉特算法」。Wikipedia 对&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%85%8B%E5%8A%AA%E6%96%AF-%E8%8E%AB%E9%87%8C%E6%96%AF-%E6%99%AE%E6%8B%89%E7%89%B9%E7%AE%97%E6%B3%95&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; KMP 算法&lt;/a&gt;的解释是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在计算机科学中，Knuth-Morris-Pratt 字符串查找算法（常简称为“KMP算法”）可在一个主“文本字符串”S内查找一个“词”W的出现位置。此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;题目的要求是：判断一段文字（原串）里面是不是存在那么一些……特殊……的文字（模式串）。若使用最简单的方法，即两个字符串从头开始比较，如果在比较中间遇到不相等的情况，便将原串加一再与模式串从头开始比较，这将耗费大量的无效比较。而使用 KMP 算法，可以去除前面比较方法中的无效比较，提高这个过程的时间复杂度。&lt;/p&gt;
+&lt;p&gt;对于 KMP 算法来说，最重要的步骤就是求的 NEXT 数组。NEXT 数组里面存储的是模式串每一个字符在遇到无法匹配的时候，在原串不移动的情况下，模式串可以跳过的无效比较的字符个数。&lt;/p&gt;
+&lt;h2 id=&quot;NEXT-数组的计算&quot;&gt;&lt;a href=&quot;#NEXT-数组的计算&quot; class=&quot;headerlink&quot; title=&quot;NEXT 数组的计算&quot;&gt;&lt;/a&gt;NEXT 数组的计算&lt;/h2&gt;&lt;p&gt;对于模式串，假设在下标 i 的位置匹配失败。此时，对于模式串下标 i 前的子串，可能存在的情况是：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;P[0 ~ k-1] == P[i-k ~ i-1]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;即模式串最开始的前 k 个字符和下标 i 前的 k 个字符相等。由于这 k 个字符相等，所以在从头开始比较便没有什么意义了，此时原串可以和模式串从k＋1 即从下标 k 开始比较，去除其中的无效比较。&lt;br&gt;通过这个公式可以知道，所谓的 NEXT 数组，其实就是找子串中最长的和 P[i-k ~ i-1] 相同的前缀P[0 ~ k-1]。&lt;/p&gt;
+&lt;h2 id=&quot;Java-语言实现&quot;&gt;&lt;a href=&quot;#Java-语言实现&quot; class=&quot;headerlink&quot; title=&quot;Java 语言实现&quot;&gt;&lt;/a&gt;Java 语言实现&lt;/h2&gt;&lt;p&gt;该程序最主要的方法便是求模式串的 NEXT 数组，以及利用 NEXT 数组计算模式串在原串中出现的次数。&lt;/p&gt;
+&lt;p&gt;计算 NEXT 数组：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int i = 0, k = -1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;next[0] = -1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int length = patternStr.length() - 1; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;char[] pStr =  patternStr.toCharArray();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;while(i &amp;lt; length)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	if(k == -1 || pStr[i] == pStr[k])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		next[++i] = ++k;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		k = next[k];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;首先对 NEXT 数组的第一个字符赋初值 -1，因为若是第一个字符便不相等，那便模式串只需和原串的下一个字符比较便可以了。&lt;/p&gt;
+&lt;p&gt;在符合条件的循环中：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;若 k＝－1 或者 pStr[i] = pStr[k]，即在模式串的下标 i 处， 如果匹配个数为 0 或者下标 i 的前 k 个字符和模式串最开始的前缀子串 P[0 ~ k] 相等，那么当原串和模式串在 i+1 处不匹配时，原串和模式串应当从模式串的 k+1 开始比较。&lt;/li&gt;
+&lt;li&gt;在其它的的情况下，即在模式串的下标 i 处，两者并不匹配，而且匹配个数不为 0，那么就应当从模式串在 k 处匹配的前缀子串 P[0 ~ k] 中寻找匹配的情况。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如此不断的查找，最后会获得整个模式串的 NEXT 数组。&lt;/p&gt;
+&lt;p&gt;计算 NEXT 数组还可以进行优化，如下所示：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int i = 0, k = -1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;next[0] = -1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int length = patternStr.length() - 1; // import - 1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;char[] pStr =  patternStr.toCharArray();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;while(i &amp;lt; length)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	if(k == -1 || pStr[i] == pStr[k])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		if(pStr[++i] == pStr[++k])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			next[i] = next[k];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			next[i] = k;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		k = next[k];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;与上面没有优化的区别主要是，当 k＝－1 或者 pStr[i] = pStr[k] 时，会再次判断 pStr[++i] == pStr[++k]：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果相等，说明在模式串 i+1 处匹配的前缀子串和模式串 k+1 处匹配的前缀子串相同，所以当原串和模式串在 i+1 处不匹配时，将原串和模式串从 i+1 处匹配的前缀子串 k+1 处开始比较是没有意义的，应当从 k+1 处匹配的前缀子串开始比较才有意义。&lt;/li&gt;
+&lt;li&gt;如果不相等，才会在 i+1 处使 next[i] = k。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;但是这种优化有一个问题，它可能需要对特定的情况进行考虑：&lt;br&gt;模式串：ADA&lt;br&gt;原串：ADADADA&lt;br&gt;在这种情况下如果使用下面的计算函数，所得到的结果与上面的方法所得的结果是不同的。&lt;/p&gt;
+&lt;p&gt;计算模式串在原串中出现的次数：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int matchNumber = 0, i = 0, j = 0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int oLength = originalStr.length();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int pLength = patternStr.length() - 1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;char[] oStr = originalStr.toCharArray();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;char[] pStr =  patternStr.toCharArray();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;while(i &amp;lt; oLength)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	if(j == -1 || oStr[i] == pStr[j])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		if(j == pLength)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			matchNumber++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			j = next[j];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		    i++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		    j++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		j = next[j];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;System.out.println(matchNumber);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在符合条件的循环里：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果 j=-1 或者原串和模式串相等，便会查看 j 是否等于模式串的长度，如果是的话说明已经匹配到最后一位，找到了一个匹配的模式串，如果不是最后一位，只需比较下一位即可。&lt;/li&gt;
+&lt;li&gt;如果不等，说明匹配失败，此时就需要使用 NEXT 数组找到与原串匹配的前缀进行比较，使得原串不需要回溯。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;通过 KMP 算法，可以有效的去除字符串查找过程中的无效比较，提高字符串查找的效率。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;这是一个考察 KMP 算法的题。KMP 算法的全称是「克努斯-莫里斯-普拉特算法」。Wikipedia 对&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%85%8B%E5%8A%AA%E6%96%AF-%E8%8E%AB%E9%87%8C%E6%96%AF-%E6%99%AE%E6%8B%89%E7%89%B9%E7%AE%97%E6%B3%95&quot;&gt; KMP 算法&lt;/a&gt;的解释是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在计算机科学中，Knuth-Morris-Pratt 字符串查找算法（常简称为“KMP算法”）可在一个主“文本字符串”S内查找一个“词”W的出现位置。此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="wenhuachen.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="wenhuachen.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="hihocoder" scheme="wenhuachen.github.io/tags/hihocoder/"/>
+    
+      <category term="KMP" scheme="wenhuachen.github.io/tags/KMP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hihocoder ＃1014</title>
+    <link href="wenhuachen.github.io/2016/03/06/algorithm-1014/"/>
+    <id>wenhuachen.github.io/2016/03/06/algorithm-1014/</id>
+    <published>2016-03-06T06:16:28.000Z</published>
+    <updated>2016-03-06T08:23:23.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;这道题是 Trie 树的问题，Trie 树也称为字典数，Wikipedia对&lt;a href=&quot;https://zh.wikipedia.org/wiki/Trie&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; Trie 树&lt;/a&gt;的解释是: &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在计算机科学中，trie，又称前缀树或字典樹，是一种有序树，用于保存关联数组，其中的键通常是字符串。&lt;/p&gt;
+&lt;p&gt;trie树常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在这道题目里，目的是要求出在一个字典里，你所期望的字符串出现的次数。通过 Trie 树，可以十分方便的获得你所期望的字符串出现的次数：因为一个字符串的所有子树都包含该字符串。为了减少查找次数时所耗费的时间，可以在建立 Trie 树的同时计算每个不同的子树的子树个数。如题目中所给的提示：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不妨称以T为根的子树中标记节点的个数为L[T]，既然我要统计某个L[T1]，，而这个结点是不确定的，我有没有办法一次性把所有结点的L[T]求出来呢？&lt;/p&gt;
+&lt;p&gt;我在最开始置所有L[T]=0，然后每次添加一个新的单词的时候，都将它经过的所有结点的L[T]全部+1，这样我构建完这棵Trie树的时候，我也就能够同时统计到所有L[T]了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Java-语言实现&quot;&gt;&lt;a href=&quot;#Java-语言实现&quot; class=&quot;headerlink&quot; title=&quot;Java 语言实现&quot;&gt;&lt;/a&gt;Java 语言实现&lt;/h2&gt;&lt;p&gt;我定义了一个类，其中包含建立该 Trie 树时，各个结点所要用到的存储结构：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;class Letter &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	char letter;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	int subTreeCount;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	Letter[] next = new Letter[26];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	Letter() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		subTreeCount = 0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		for(int i=0; i&amp;lt;26; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			next[i] = null;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	Letter(char newInsert) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		letter = newInsert;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		subTreeCount = 0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		for(int i=0; i&amp;lt;26; i++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			next[i] = null;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在这个类里，我定义了两个构造方法，第一个在创建根结点的时候使用，第二个在创建各个子结点的时候使用，每个结点里存储了子树的数目和该结点所表示的字符。&lt;/p&gt;
+&lt;p&gt;在该程序中最重要的两个方法便是 Trie 树的建立以及查找，完成了这两个方法，也就相当于完成了这个程序，下面介绍这两个程序。&lt;/p&gt;
+&lt;p&gt;Tire 树建立：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;String word = scanf.nextLine();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Letter findLetter = dictionary;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;for(int j=0; j&amp;lt;word.length(); j++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	int k = word.charAt(j) - &amp;apos;a&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	if(findLetter.next[k] == null)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		Letter insertLetter = new Letter(word.charAt(j));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		findLetter.next[k] = insertLetter;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	findLetter = findLetter.next[k];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	findLetter.subTreeCount++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在读取了所需要加入 Tire 树的单词后，一次读入单词内的每一个字符，如果该字符没有存入到 Tire 树的话，便将字符存入树中相应的结点里。同时在建立树的过程中计算相应结点子树的个数，最终完成 Tire 树的建立。&lt;/p&gt;
+&lt;p&gt;Tire 树的查找：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;searchLetter = dictionary;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;String word = scanf.nextLine();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;for(int j=0; j&amp;lt;word.length(); j++)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	int k = word.charAt(j) - &amp;apos;a&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	if(searchLetter.next[k] == null)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		System.out.println(0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		break;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	searchLetter = searchLetter.next[k];		&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	if(j == word.length()-1)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		System.out.println(searchLetter.subTreeCount);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;由于在建立树时已经计算了各个结点的子树的个数，所以查找字符串的个数十分的简单。获得要查找的字符串后，对整个 Tire 树从根结点开始查找，若找到这个字符串，便输出该字符串所出现的次数；若没有找到这个字符串，便输出查找结果为0。&lt;/p&gt;
+&lt;h2 id=&quot;总结&quot;&gt;&lt;a href=&quot;#总结&quot; class=&quot;headerlink&quot; title=&quot;总结&quot;&gt;&lt;/a&gt;总结&lt;/h2&gt;&lt;p&gt;通过 Tire 树，在查找某个所需的字符串时，可以简化对整个十分庞大的数据源的查找。减少遍历查找整个数据源所耗费的时间。就像 Wikipedia 里所说的，用于搜索的提示。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;这道题是 Trie 树的问题，Trie 树也称为字典数，Wikipedia对&lt;a href=&quot;https://zh.wikipedia.org/wiki/Trie&quot;&gt; Trie 树&lt;/a&gt;的解释是: &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在计算机科学中，trie，又称前缀树或字典樹，是一种有序树，用于保存关联数组，其中的键通常是字符串。&lt;/p&gt;
+&lt;p&gt;trie树常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="wenhuachen.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="wenhuachen.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="hihicoder" scheme="wenhuachen.github.io/tags/hihicoder/"/>
+    
+      <category term="Trie树" scheme="wenhuachen.github.io/tags/Trie%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C language</title>
+    <link href="wenhuachen.github.io/2016/03/06/c-language-summary/"/>
+    <id>wenhuachen.github.io/2016/03/06/c-language-summary/</id>
+    <published>2016-03-06T06:00:01.000Z</published>
+    <updated>2016-03-06T12:41:36.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;这个文章我会持续的更新，主要是记录自己在开放的过程中所遇到的各种问题，所犯的各种错误，学习到的各种技巧等等。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;关键字&quot;&gt;&lt;a href=&quot;#关键字&quot; class=&quot;headerlink&quot; title=&quot;关键字&quot;&gt;&lt;/a&gt;关键字&lt;/h2&gt;&lt;p&gt;＊ NULL&lt;br&gt;C 语言里的空，即 NULL，是大写的。这是因为C语言是大小写敏感的语言。在 C 语言的头文件里，NULL 的定义是：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#define NULL ((void*)0)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h2&gt;&lt;p&gt;C语言的函数永远是值传递（除了数组），若想改变指针的指向（地址值），就必须传递指针的指针，除非你用return。&lt;/p&gt;
+&lt;h2 id=&quot;ERROR&quot;&gt;&lt;a href=&quot;#ERROR&quot; class=&quot;headerlink&quot; title=&quot;ERROR&quot;&gt;&lt;/a&gt;ERROR&lt;/h2&gt;&lt;p&gt;在编程过程中遇到错误，多数情况下是对指针的错误操作，即对内存的错误访问。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;这个文章我会持续的更新，主要是记录自己在开放的过程中所遇到的各种问题，所犯的各种错误，学习到的各种技巧等等。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="语言学习" scheme="wenhuachen.github.io/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="C Language" scheme="wenhuachen.github.io/tags/C-Language/"/>
+    
+  </entry>
+  
+  <entry>
     <title>2016 Plan</title>
     <link href="wenhuachen.github.io/2016/03/05/2016plan/"/>
     <id>wenhuachen.github.io/2016/03/05/2016plan/</id>
     <published>2016-03-05T04:38:21.000Z</published>
-    <updated>2016-03-05T06:24:44.000Z</updated>
+    <updated>2016-03-06T06:43:42.000Z</updated>
     
     <content type="html">&lt;p&gt;本计划着过完春节回来工作后，便开始博客的搭建。但由于自己的拖延症，直到现在才搭建完成，博客的主体功能已经弄好了，剩下的细节在后面逐渐完善。对于自己的第一篇博文，我打算写写自己 2016 年的计划，看看到年末的时候是否全部完成。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;工作&quot;&gt;&lt;a href=&quot;#工作&quot; class=&quot;headerlink&quot; title=&quot;工作&quot;&gt;&lt;/a&gt;工作&lt;/h2&gt;&lt;p&gt;在现在公司的工作中，虽然可以学到在平常学习中所学不到的知识，提升自己的技术水平，但对于公司的整个工作氛围却并不是十分喜欢，官僚化太过严重；当然薪资也是一个很大的问题，每月公司所付的薪水并不能够很好的改善现在的生活和娱乐，同时父母也对我的生活环境有所担忧。所以今年的工作计划是跳槽成功。&lt;/p&gt;
 &lt;h2 id=&quot;生活&quot;&gt;&lt;a href=&quot;#生活&quot; class=&quot;headerlink&quot; title=&quot;生活&quot;&gt;&lt;/a&gt;生活&lt;/h2&gt;&lt;p&gt;自从去年毕业参加工作，如今已经8个多月了，在非工作的时间段里，做了太多无意义的消遣，感觉自己有点混吃等死。从现在开始，希望自己可以做一些对提升自己技术水平和对自己未来有意义的事，不再浪费时间：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;能力提升：&lt;br&gt;持续的在hihocoder上进行编程算法的练习。同时每完成一个算法题，便将自己在解决问题中学到的知识，遇到的问题，总结出来，发布到博客上（现在已经完成了三道题，最近要将这三道题的文章尽快完成）。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;能力提升：&lt;br&gt;持续的在hihocoder上进行编程算法的练习。同时每完成一个算法题，便将自己在解决问题中学到的知识，遇到的问题，总结出来，发布到博客上（现在已经完成了两道题，最近要将这两道题的文章尽快完成）。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Swift 学习：&lt;br&gt;很早以前就有进行 iOS 开发的想法，但都没有长久的坚持下去。去年初跟随斯坦福大学的「&lt;a href=&quot;https://itunesu.itunes.apple.com/WebObjects/LZDirectory.woa/ra/directory/courses/733644550/feed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Developing iOS 7 Apps for iPhone and iPad&lt;/a&gt;」课程学习了 Objective-C 语言，以及如何使用该语言开发 iOS 程序。但在完成课程的学习后去并没有继续坚持学习和进行自主的 iOS 程序开发，导致当初学的知识基本已经还回去了。今年的计划是进行 Swift 语言的学习，同时在完成相应语言的学习后，进行App的开发，争取今年有一款自己开发的程序上架。&lt;/p&gt;
 &lt;/li&gt;
