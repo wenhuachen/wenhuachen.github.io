@@ -43,7 +43,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="C Language," />
+  <meta name="keywords" content="iOS,swift," />
 
 
 
@@ -61,16 +61,18 @@
 
 
 
-<meta name="description" content="说明这个文章我会持续的更新，主要是记录自己在开放的过程中所遇到的各种问题，所犯的各种错误，学习到的各种技巧等等。">
+<meta name="description" content="##说明这篇文章主要记录我在跟随斯坦福的公开课「Developing iOS8 Apps with Swift」学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C language">
-<meta property="og:url" content="wenhuachen.github.io/2016/03/06/c-language-summary/index.html">
+<meta property="og:title" content="Learning Developing iOS Note">
+<meta property="og:url" content="wenhuachen.github.io/2016/03/13/Learning-Developing-iOS-Note/index.html">
 <meta property="og:site_name" content="Jonathan‘s Personal Blog">
-<meta property="og:description" content="说明这个文章我会持续的更新，主要是记录自己在开放的过程中所遇到的各种问题，所犯的各种错误，学习到的各种技巧等等。">
-<meta property="og:updated_time" content="2016-03-06T12:41:36.000Z">
+<meta property="og:description" content="##说明这篇文章主要记录我在跟随斯坦福的公开课「Developing iOS8 Apps with Swift」学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。">
+<meta property="og:image" content="wenhuachen.github.io/source/images/iOS_Arch.tiff">
+<meta property="og:updated_time" content="2016-03-13T12:51:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C language">
-<meta name="twitter:description" content="说明这个文章我会持续的更新，主要是记录自己在开放的过程中所遇到的各种问题，所犯的各种错误，学习到的各种技巧等等。">
+<meta name="twitter:title" content="Learning Developing iOS Note">
+<meta name="twitter:description" content="##说明这篇文章主要记录我在跟随斯坦福的公开课「Developing iOS8 Apps with Swift」学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。">
+<meta name="twitter:image" content="wenhuachen.github.io/source/images/iOS_Arch.tiff">
 
 
 
@@ -88,7 +90,7 @@
   };
 </script>
 
-  <title> C language | Jonathan‘s Personal Blog </title>
+  <title> Learning Developing iOS Note | Jonathan‘s Personal Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -239,7 +241,7 @@
             
             
               
-                C language
+                Learning Developing iOS Note
               
             
           </h1>
@@ -251,8 +253,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-06T14:00:01+08:00" content="2016-03-06">
-              2016-03-06
+            <time itemprop="dateCreated" datetime="2016-03-13T16:02:01+08:00" content="2016-03-13">
+              2016-03-13
             </time>
           </span>
 
@@ -265,8 +267,20 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/语言学习/" itemprop="url" rel="index">
-                    <span itemprop="name">语言学习</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/swift/" itemprop="url" rel="index">
+                    <span itemprop="name">swift</span>
                   </a>
                 </span>
 
@@ -281,8 +295,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/06/c-language-summary/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/06/c-language-summary/" itemprop="commentsCount"></span>
+                <a href="/2016/03/13/Learning-Developing-iOS-Note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/13/Learning-Developing-iOS-Note/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -292,7 +306,7 @@
 
           
           
-             <span id="/2016/03/06/c-language-summary/" class="leancloud_visitors" data-flag-title="C language">
+             <span id="/2016/03/13/Learning-Developing-iOS-Note/" class="leancloud_visitors" data-flag-title="Learning Developing iOS Note">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -313,11 +327,34 @@
       
 
       
-        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>这个文章我会持续的更新，主要是记录自己在开放的过程中所遇到的各种问题，所犯的各种错误，学习到的各种技巧等等。<br><a id="more"></a></p>
-<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>＊ NULL<br>C 语言里的空，即 NULL，是大写的。这是因为C语言是大小写敏感的语言。在 C 语言的头文件里，NULL 的定义是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define NULL ((void*)0)</span><br></pre></td></tr></table></figure>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>C语言的函数永远是值传递（除了数组），若想改变指针的指向（地址值），就必须传递指针的指针，除非你用return。</p>
-<h2 id="ERROR"><a href="#ERROR" class="headerlink" title="ERROR"></a>ERROR</h2><p>在编程过程中遇到错误，多数情况下是对指针的错误操作，即对内存的错误访问。</p>
+        <p>##说明<br>这篇文章主要记录我在跟随斯坦福的公开课<a href="https://itunesu.itunes.apple.com/WebObjects/LZDirectory.woa/ra/directory/courses/961180099/feed" target="_blank" rel="external">「Developing iOS8 Apps with Swift」</a>学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。<br><a id="more"></a></p>
+<p>##Lecture 1<br>第一节课主要是做了 iOS 开发的一些基本介绍和一个计算器Damo的一部分工作，其中比较重要的知识点是：</p>
+<ul>
+<li><p>iOS 的架构是：<br><img src="/source/images/iOS_Arch.tiff" alt="What&#39;s in iOS?"></p>
+</li>
+<li><p>在print方法的参数里，可以使用 “(variable)” 将 variable 转换为一个字符串。</p>
+<ul>
+<li>println方法已经在 swift 2.0 的版本里去除了。</li>
+<li>print默认具备了println的功能，要使输出不换行，需通过 terminator 参数设定字符串的结尾是什么，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;Append without to new line&quot;, terminator: &quot;&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>swift 是强类型的，当我们声明一个变量时，必须对变量指定一个类型，但是你可以通过 swift 的「type inference」特性，推断出变量的类型。</p>
+</li>
+<li><p>Optional，即可选类型，唯有它可以不初始化使用：</p>
+<ul>
+<li><p>只有两个值：</p>
+<ul>
+<li>not set。可用 nil 表示该状态，即该状态的值。nil 只能用于 optional。</li>
+<li>something。即被赋了一个值，通过 ? 说明被赋了哪种类型的值，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let digit: String?</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>要想获得 optional 的值，可通过 !。即「unwrap the optional, meaning you look in there and get the associated value, with exclamation point.」。若值为 nil，程序会 crash。</p>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -332,7 +369,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C-Language/" rel="tag">#C Language</a>
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+            <a href="/tags/swift/" rel="tag">#swift</a>
           
         </div>
       
@@ -341,17 +380,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/05/2016plan/" rel="next" title="2016 Plan">
-                <i class="fa fa-chevron-left"></i> 2016 Plan
+              <a href="/2016/03/06/algorithm-1015/" rel="next" title="hihocoder ＃1015">
+                <i class="fa fa-chevron-left"></i> hihocoder ＃1015
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/06/algorithm-1014/" rel="prev" title="hihocoder ＃1014">
-                hihocoder ＃1014 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -377,8 +412,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/06/c-language-summary/"
-           data-title="C language" data-url="wenhuachen.github.io/2016/03/06/c-language-summary/">
+      <div class="ds-thread" data-thread-key="2016/03/13/Learning-Developing-iOS-Note/"
+           data-title="Learning Developing iOS Note" data-url="wenhuachen.github.io/2016/03/13/Learning-Developing-iOS-Note/">
       </div>
     
   </div>
@@ -496,7 +531,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字"><span class="nav-number">2.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">3.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ERROR"><span class="nav-number">4.</span> <span class="nav-text">ERROR</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
