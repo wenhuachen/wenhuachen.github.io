@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="wenhuachen.github.io/"/>
-  <updated>2016-03-13T13:07:01.000Z</updated>
+  <updated>2016-03-20T14:30:09.000Z</updated>
   <id>wenhuachen.github.io/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="wenhuachen.github.io/2016/03/13/Learning-Developing-iOS-Note/"/>
     <id>wenhuachen.github.io/2016/03/13/Learning-Developing-iOS-Note/</id>
     <published>2016-03-13T08:02:01.000Z</published>
-    <updated>2016-03-13T13:07:01.000Z</updated>
+    <updated>2016-03-20T14:30:09.000Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;这篇文章主要记录我在跟随斯坦福的公开课&lt;a href=&quot;https://itunesu.itunes.apple.com/WebObjects/LZDirectory.woa/ra/directory/courses/961180099/feed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;「Developing iOS8 Apps with Swift」&lt;/a&gt;学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Lecture-1&quot;&gt;&lt;a href=&quot;#Lecture-1&quot; class=&quot;headerlink&quot; title=&quot;Lecture 1&quot;&gt;&lt;/a&gt;Lecture 1&lt;/h2&gt;&lt;p&gt;第一节课主要是做了 iOS 开发的一些基本介绍和一个计算器Damo的一部分工作，其中比较重要的知识点是：&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;这篇文章主要记录我在跟随斯坦福的公开课&lt;a href=&quot;https://itunesu.itunes.apple.com/WebObjects/LZDirectory.woa/ra/directory/courses/961180099/feed&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;「Developing iOS8 Apps with Swift」&lt;/a&gt;学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。『将会持续更新』&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Lecture-1&quot;&gt;&lt;a href=&quot;#Lecture-1&quot; class=&quot;headerlink&quot; title=&quot;Lecture 1&quot;&gt;&lt;/a&gt;Lecture 1&lt;/h2&gt;&lt;p&gt;第一节课主要是做了 iOS 开发的一些基本介绍和一个计算器 Damo 的一部分工作，其中比较重要的知识点是：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;iOS 的架构是：&lt;br&gt;&lt;img src=&quot;/images/iOS_Arch.jpg&quot; alt=&quot;What&amp;#39;s in iOS?&quot;&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -50,11 +50,137 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;h2 id=&quot;Lecture-2&quot;&gt;&lt;a href=&quot;#Lecture-2&quot; class=&quot;headerlink&quot; title=&quot;Lecture 2&quot;&gt;&lt;/a&gt;Lecture 2&lt;/h2&gt;&lt;p&gt;第二节课继续上节课未完成的计算器 Demo，然后讲解了 MVC 这种设计模式。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;由于 Swift 是强类型，同时具有类型推断，所以你可以简化变量的定义：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var operandStack: Array&amp;lt;Double&amp;gt; = Array&amp;lt;Double&amp;gt;()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 简化为：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var operandStack = Array&amp;lt;Double&amp;gt;()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;「computed properties」计算型属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;计算型属性不直接存储值，而是提供一个 getter 来获取值，一个可选的 setter 来间接设置其他属性或变量的值。&lt;/li&gt;
+&lt;li&gt;如果计算型属性的 setter 没有定义表示新值的参数名，则可以使用默认名称newValue。&lt;/li&gt;
+&lt;li&gt;必须使用var关键字定义计算属性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NSNumberFormatter 类，官方的说明：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Instances of NSNumberFormatter format the textual representation of cells that contain NSNumber objects and convert textual representations of numeric values into NSNumber objects. The representation encompasses integers, floats, and doubles; floats and doubles can be formatted to a specified decimal position. NSNumberFormatter objects can also impose ranges on the numeric values cells can accept.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;「function type」函数类型 :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可以定义一个常量或变量为一个函数类型，并指定适当的函数给该变量：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var mathFunction: (Int, Int) -&amp;gt; Int = addTwoInts&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;也可以使用函数类型为一个函数的参数：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;func performOperation(operation: (Double, Double) -&amp;gt; Double)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在 Swift 里，将函数作为参数传递很常见。如将函数:&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;func multipy(op1: Double, op2: Double) -&amp;gt; Double &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	return op1 * op2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 变为 performOperation 的参数：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;performOperation(&amp;#123;(op1: Double, op2: Double) -&amp;gt; Double in&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return op1 * op2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 通过 type inference 可对上面进行近一步的简化：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;performOperation(&amp;#123;(op1, op2) in&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return op1 * op2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 如果你的代码只有一句返回语句，那么你可以去掉 return 关键字：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;erformOperation(&amp;#123;(op1, op2) in op1 * op2&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 由于 Swift 不强制你给参数命名，若未命名，程序会自动从 $0 开始给所有参数命名：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;performOperation(&amp;#123;$0 * $1&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 如果你的 operation 函数是 performOperation 的最后一个参数，那么你可以移动 operation 函数的位置到括号外：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;performOperation() &amp;#123;$0 * $1&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 如果再没有其它的参数，那可继续简化为：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;performOperation &amp;#123;$0 * $1&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;发生的错误：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import UIKit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;class BugViewController: UIViewController&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	func perform(operation: (Double) -&amp;gt; Double) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	func perform(operation: (Double, Double) -&amp;gt; Double) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 错误为：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ViewController.swift:53:10: Method &amp;apos;performOperation&amp;apos; with Objective-C selector &amp;apos;performOperation:&amp;apos; conflicts with previous declaration with the same Objective-C selector&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt; 这是因为 Objective-C 并不支持方法的重载(overloading)(?)。而继承的 UIViewController 类，继承了 NSObject 类，从而使 BugViewController 类继承了 Objective-C 的类。&lt;br&gt; 解决的方法有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;重命名方法。&lt;/li&gt;
+&lt;li&gt;在重载的方法前加 private 声明，说明该方法只用于该类。&lt;/li&gt;
+&lt;li&gt;在重载方法前添加 @nonobjc 属性。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;MVC 设计模式：区分所有的对象到 Model、View、Controller 的其中一个。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Model: Waht your application does.(but not how it is displayed, the stuff in the model is completely independent of the how your UI works)&lt;/li&gt;
+&lt;li&gt;Controller: How your Model is presented to the user.(UI logic, the stuff in the controller is very specific to how your UI works)&lt;/li&gt;
+&lt;li&gt;View: Your controller’s minions.(the classes that the controller is going to use, the stuff that’s in the view is pretty generic)&lt;/li&gt;
+&lt;li&gt;Model、View、Controller 三者之间的交互：&lt;br&gt; &lt;img src=&quot;/images/MVC_Communication.jpg&quot; alt=&quot;communication in MVC&quot;&gt;&lt;/li&gt;
+&lt;li&gt;一个 MVC 可以将另一个 MVC 作为 View 的一部分&lt;br&gt; &lt;img src=&quot;/images/More_MVC.jpg&quot; alt=&quot;More MVC&quot;&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;Lecture-3&quot;&gt;&lt;a href=&quot;#Lecture-3&quot; class=&quot;headerlink&quot; title=&quot;Lecture 3&quot;&gt;&lt;/a&gt;Lecture 3&lt;/h2&gt;&lt;p&gt;第三节课主要继续完善计算器的 Demo，同时完全遵循 MVC 设计模式。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;枚举可以和类一样有 functions、properties(只能是 computed properties)。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;枚举没有继承特性。&lt;/li&gt;
+&lt;li&gt;在枚举里，你可以将数据类型和任何 case 关联起来。&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;enum Op &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       case Operand(Double)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       case UnaryOperation(String, Double -&amp;gt; Double)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       case BinaryOperation(String, (Double, Double) -&amp;gt; Double)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;声明数组可以这样写：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var opStack = Array&amp;lt;op&amp;gt;()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;推介的写法是：&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var opStack = [op]()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;声明字典可以这样写：&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var knownOps = Dictionary&amp;lt;String, Op&amp;gt;()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;推介的写法是：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var knownOps = [String: Op]()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;每当你要在字典里寻找东西，它返回的都是一个 Optional 类型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;「Initializer」初始化：初始化是通过 init() 方法实现的。&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;init() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       knownOps[&amp;quot;×&amp;quot;] = Op.BinaryOperation(&amp;quot;×&amp;quot;) &amp;#123;$0 * $1&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       knownOps[&amp;quot;÷&amp;quot;] = Op.BinaryOperation(&amp;quot;÷&amp;quot;) &amp;#123;$1 * $0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       knownOps[&amp;quot;+&amp;quot;] = Op.BinaryOperation(&amp;quot;+&amp;quot;) &amp;#123;$0 * $1&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       knownOps[&amp;quot;−&amp;quot;] = Op.BinaryOperation(&amp;quot;−&amp;quot;) &amp;#123;$1 * $0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       knownOps[&amp;quot;√&amp;quot;] = Op.UnaryOperation(&amp;quot;√&amp;quot;) &amp;#123;sqrt($0)&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;「Closures」闭包：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 Swift 里，所有的操作符，如加减乘除，都是函数。它们只不过刚好以某种方式规定了可以插入两个参数之间，而不需要从圆括号里获取参数。所以上面的初始化可以简化为：&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;init() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       knownOps[&amp;quot;×&amp;quot;] = Op.BinaryOperation(&amp;quot;×&amp;quot;, *)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       knownOps[&amp;quot;÷&amp;quot;] = Op.BinaryOperation(&amp;quot;÷&amp;quot;) &amp;#123;$1 / $0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       knownOps[&amp;quot;+&amp;quot;] = Op.BinaryOperation(&amp;quot;+&amp;quot;, +)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       knownOps[&amp;quot;−&amp;quot;] = Op.BinaryOperation(&amp;quot;−&amp;quot;) &amp;#123;$1 - $0&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       knownOps[&amp;quot;√&amp;quot;] = Op.UnaryOperation(&amp;quot;√&amp;quot;, sqrt)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;「Access Control」访问控制：默认是 public，想要私有需要添加 private。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;「Tuples」元组：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将多个东西组合起来成为一个相当迷你的数据结构叫做元组。只需将它们放入到一对圆括号里。&lt;/li&gt;
+&lt;li&gt;元组可用于做返回值。&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;func evaluate(ops: [Op]) -&amp;gt; (result: Double?, remainingOps: [Op])	&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;当你给方法传递参数时，只要你传入的不是一个类的实例，，那么你传入的参数就是拷贝的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;类和结构体的不同：类是可以继承的，结构体不可以继承；类传递的参数是引用，结构体传递的参数是值。&lt;ul&gt;
+&lt;li&gt;结构体通常仅用于基础数据类型，像数组、字典这样的元素。Double 类型和 Int 类型在 Swift 中都是结构体。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;在传递的参数前，隐含了 let。&lt;/li&gt;
+&lt;li&gt;在调用方法的参数位置使用 &lt;em&gt; 来忽略该参数。 &lt;/em&gt; 在 Swift 里是一种「I don’t care about this thing」的通用表达。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;「Protocol」：对结构体和类都有效。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;private enum Op: CustomStringConvertible&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Swift 里，可以在一个 function1 里添加另一个 function2(只在 function1 里面被调用)。 &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;未完待续&amp;gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;这篇文章主要记录我在跟随斯坦福的公开课&lt;a href=&quot;https://itunesu.itunes.apple.com/WebObjects/LZDirectory.woa/ra/directory/courses/961180099/feed&quot;&gt;「Developing iOS8 Apps with Swift」&lt;/a&gt;学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。&lt;br&gt;
+      &lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;这篇文章主要记录我在跟随斯坦福的公开课&lt;a href=&quot;https://itunesu.itunes.apple.com/WebObjects/LZDirectory.woa/ra/directory/courses/961180099/feed&quot;&gt;「Developing iOS8 Apps with Swift」&lt;/a&gt;学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。『将会持续更新』&lt;br&gt;
     
     </summary>
     

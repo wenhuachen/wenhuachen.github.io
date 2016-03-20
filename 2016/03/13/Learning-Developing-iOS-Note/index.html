@@ -61,17 +61,19 @@
 
 
 
-<meta name="description" content="说明这篇文章主要记录我在跟随斯坦福的公开课「Developing iOS8 Apps with Swift」学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。">
+<meta name="description" content="说明这篇文章主要记录我在跟随斯坦福的公开课「Developing iOS8 Apps with Swift」学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。『将会持续更新』">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Learning Developing iOS Note">
 <meta property="og:url" content="wenhuachen.github.io/2016/03/13/Learning-Developing-iOS-Note/index.html">
 <meta property="og:site_name" content="Jonathan‘s Personal Blog">
-<meta property="og:description" content="说明这篇文章主要记录我在跟随斯坦福的公开课「Developing iOS8 Apps with Swift」学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。">
+<meta property="og:description" content="说明这篇文章主要记录我在跟随斯坦福的公开课「Developing iOS8 Apps with Swift」学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。『将会持续更新』">
 <meta property="og:image" content="wenhuachen.github.io/images/iOS_Arch.jpg">
-<meta property="og:updated_time" content="2016-03-13T13:07:01.000Z">
+<meta property="og:image" content="wenhuachen.github.io/images/MVC_Communication.jpg">
+<meta property="og:image" content="wenhuachen.github.io/images/More_MVC.jpg">
+<meta property="og:updated_time" content="2016-03-20T14:30:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learning Developing iOS Note">
-<meta name="twitter:description" content="说明这篇文章主要记录我在跟随斯坦福的公开课「Developing iOS8 Apps with Swift」学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。">
+<meta name="twitter:description" content="说明这篇文章主要记录我在跟随斯坦福的公开课「Developing iOS8 Apps with Swift」学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。『将会持续更新』">
 <meta name="twitter:image" content="wenhuachen.github.io/images/iOS_Arch.jpg">
 
 
@@ -327,8 +329,8 @@
       
 
       
-        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>这篇文章主要记录我在跟随斯坦福的公开课<a href="https://itunesu.itunes.apple.com/WebObjects/LZDirectory.woa/ra/directory/courses/961180099/feed" target="_blank" rel="external">「Developing iOS8 Apps with Swift」</a>学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。<br><a id="more"></a></p>
-<h2 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title="Lecture 1"></a>Lecture 1</h2><p>第一节课主要是做了 iOS 开发的一些基本介绍和一个计算器Damo的一部分工作，其中比较重要的知识点是：</p>
+        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>这篇文章主要记录我在跟随斯坦福的公开课<a href="https://itunesu.itunes.apple.com/WebObjects/LZDirectory.woa/ra/directory/courses/961180099/feed" target="_blank" rel="external">「Developing iOS8 Apps with Swift」</a>学习时所遇到的，对我而言比较重要的知识点，当然可能会对你们也有一定的帮助。『将会持续更新』<br><a id="more"></a></p>
+<h2 id="Lecture-1"><a href="#Lecture-1" class="headerlink" title="Lecture 1"></a>Lecture 1</h2><p>第一节课主要是做了 iOS 开发的一些基本介绍和一个计算器 Damo 的一部分工作，其中比较重要的知识点是：</p>
 <ol>
 <li><p>iOS 的架构是：<br><img src="/images/iOS_Arch.jpg" alt="What&#39;s in iOS?"></p>
 </li>
@@ -355,6 +357,132 @@
 </ul>
 </li>
 </ol>
+<h2 id="Lecture-2"><a href="#Lecture-2" class="headerlink" title="Lecture 2"></a>Lecture 2</h2><p>第二节课继续上节课未完成的计算器 Demo，然后讲解了 MVC 这种设计模式。</p>
+<ol>
+<li><p>由于 Swift 是强类型，同时具有类型推断，所以你可以简化变量的定义：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var operandStack: Array&lt;Double&gt; = Array&lt;Double&gt;()</span><br></pre></td></tr></table></figure>
+<p> 简化为：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var operandStack = Array&lt;Double&gt;()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>「computed properties」计算型属性：</p>
+<ul>
+<li>计算型属性不直接存储值，而是提供一个 getter 来获取值，一个可选的 setter 来间接设置其他属性或变量的值。</li>
+<li>如果计算型属性的 setter 没有定义表示新值的参数名，则可以使用默认名称newValue。</li>
+<li>必须使用var关键字定义计算属性。</li>
+</ul>
+</li>
+<li><p>NSNumberFormatter 类，官方的说明：</p>
+<blockquote>
+<p>Instances of NSNumberFormatter format the textual representation of cells that contain NSNumber objects and convert textual representations of numeric values into NSNumber objects. The representation encompasses integers, floats, and doubles; floats and doubles can be formatted to a specified decimal position. NSNumberFormatter objects can also impose ranges on the numeric values cells can accept.</p>
+</blockquote>
+</li>
+<li><p>「function type」函数类型 :</p>
+<ul>
+<li><p>可以定义一个常量或变量为一个函数类型，并指定适当的函数给该变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var mathFunction: (Int, Int) -&gt; Int = addTwoInts</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>也可以使用函数类型为一个函数的参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func performOperation(operation: (Double, Double) -&gt; Double)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>在 Swift 里，将函数作为参数传递很常见。如将函数:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func multipy(op1: Double, op2: Double) -&gt; Double &#123;</span><br><span class="line">   	return op1 * op2</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p> 变为 performOperation 的参数：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">performOperation(&#123;(op1: Double, op2: Double) -&gt; Double in</span><br><span class="line">    return op1 * op2</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p> 通过 type inference 可对上面进行近一步的简化：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">performOperation(&#123;(op1, op2) in</span><br><span class="line">    return op1 * op2</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p> 如果你的代码只有一句返回语句，那么你可以去掉 return 关键字：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erformOperation(&#123;(op1, op2) in op1 * op2&#125;)</span><br></pre></td></tr></table></figure>
+<p> 由于 Swift 不强制你给参数命名，若未命名，程序会自动从 $0 开始给所有参数命名：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">performOperation(&#123;$0 * $1&#125;)</span><br></pre></td></tr></table></figure>
+<p> 如果你的 operation 函数是 performOperation 的最后一个参数，那么你可以移动 operation 函数的位置到括号外：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">performOperation() &#123;$0 * $1&#125;</span><br></pre></td></tr></table></figure>
+<p> 如果再没有其它的参数，那可继续简化为：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">performOperation &#123;$0 * $1&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发生的错误：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">class BugViewController: UIViewController</span><br><span class="line">&#123;</span><br><span class="line">   	func perform(operation: (Double) -&gt; Double) &#123;</span><br><span class="line">   	&#125;</span><br><span class="line"></span><br><span class="line">   	func perform(operation: (Double, Double) -&gt; Double) &#123;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 错误为：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ViewController.swift:53:10: Method &apos;performOperation&apos; with Objective-C selector &apos;performOperation:&apos; conflicts with previous declaration with the same Objective-C selector</span><br></pre></td></tr></table></figure>
+<p> 这是因为 Objective-C 并不支持方法的重载(overloading)(?)。而继承的 UIViewController 类，继承了 NSObject 类，从而使 BugViewController 类继承了 Objective-C 的类。<br> 解决的方法有：</p>
+<ol>
+<li>重命名方法。</li>
+<li>在重载的方法前加 private 声明，说明该方法只用于该类。</li>
+<li>在重载方法前添加 @nonobjc 属性。</li>
+</ol>
+</li>
+<li><p>MVC 设计模式：区分所有的对象到 Model、View、Controller 的其中一个。</p>
+<ol>
+<li>Model: Waht your application does.(but not how it is displayed, the stuff in the model is completely independent of the how your UI works)</li>
+<li>Controller: How your Model is presented to the user.(UI logic, the stuff in the controller is very specific to how your UI works)</li>
+<li>View: Your controller’s minions.(the classes that the controller is going to use, the stuff that’s in the view is pretty generic)</li>
+<li>Model、View、Controller 三者之间的交互：<br> <img src="/images/MVC_Communication.jpg" alt="communication in MVC"></li>
+<li>一个 MVC 可以将另一个 MVC 作为 View 的一部分<br> <img src="/images/More_MVC.jpg" alt="More MVC"></li>
+</ol>
+</li>
+</ol>
+<h2 id="Lecture-3"><a href="#Lecture-3" class="headerlink" title="Lecture 3"></a>Lecture 3</h2><p>第三节课主要继续完善计算器的 Demo，同时完全遵循 MVC 设计模式。</p>
+<ol>
+<li><p>枚举可以和类一样有 functions、properties(只能是 computed properties)。</p>
+<ul>
+<li>枚举没有继承特性。</li>
+<li>在枚举里，你可以将数据类型和任何 case 关联起来。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum Op &#123;</span><br><span class="line">       case Operand(Double)</span><br><span class="line">       case UnaryOperation(String, Double -&gt; Double)</span><br><span class="line">       case BinaryOperation(String, (Double, Double) -&gt; Double)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>声明数组可以这样写：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var opStack = Array&lt;op&gt;()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>推介的写法是：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var opStack = [op]()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>声明字典可以这样写：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var knownOps = Dictionary&lt;String, Op&gt;()</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>推介的写法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var knownOps = [String: Op]()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>每当你要在字典里寻找东西，它返回的都是一个 Optional 类型。</p>
+</li>
+</ul>
+</li>
+<li><p>「Initializer」初始化：初始化是通过 init() 方法实现的。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">init() &#123;</span><br><span class="line">       knownOps[&quot;×&quot;] = Op.BinaryOperation(&quot;×&quot;) &#123;$0 * $1&#125;</span><br><span class="line">       knownOps[&quot;÷&quot;] = Op.BinaryOperation(&quot;÷&quot;) &#123;$1 * $0&#125;</span><br><span class="line">       knownOps[&quot;+&quot;] = Op.BinaryOperation(&quot;+&quot;) &#123;$0 * $1&#125;</span><br><span class="line">       knownOps[&quot;−&quot;] = Op.BinaryOperation(&quot;−&quot;) &#123;$1 * $0&#125;</span><br><span class="line">       knownOps[&quot;√&quot;] = Op.UnaryOperation(&quot;√&quot;) &#123;sqrt($0)&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>「Closures」闭包：</p>
+<ul>
+<li>在 Swift 里，所有的操作符，如加减乘除，都是函数。它们只不过刚好以某种方式规定了可以插入两个参数之间，而不需要从圆括号里获取参数。所以上面的初始化可以简化为：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">init() &#123;</span><br><span class="line">       knownOps[&quot;×&quot;] = Op.BinaryOperation(&quot;×&quot;, *)</span><br><span class="line">       knownOps[&quot;÷&quot;] = Op.BinaryOperation(&quot;÷&quot;) &#123;$1 / $0&#125;</span><br><span class="line">       knownOps[&quot;+&quot;] = Op.BinaryOperation(&quot;+&quot;, +)</span><br><span class="line">       knownOps[&quot;−&quot;] = Op.BinaryOperation(&quot;−&quot;) &#123;$1 - $0&#125;</span><br><span class="line">       knownOps[&quot;√&quot;] = Op.UnaryOperation(&quot;√&quot;, sqrt)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>「Access Control」访问控制：默认是 public，想要私有需要添加 private。</p>
+</li>
+<li><p>「Tuples」元组：</p>
+<ul>
+<li>将多个东西组合起来成为一个相当迷你的数据结构叫做元组。只需将它们放入到一对圆括号里。</li>
+<li>元组可用于做返回值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func evaluate(ops: [Op]) -&gt; (result: Double?, remainingOps: [Op])	&#123;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>当你给方法传递参数时，只要你传入的不是一个类的实例，，那么你传入的参数就是拷贝的。</p>
+</li>
+<li>类和结构体的不同：类是可以继承的，结构体不可以继承；类传递的参数是引用，结构体传递的参数是值。<ul>
+<li>结构体通常仅用于基础数据类型，像数组、字典这样的元素。Double 类型和 Int 类型在 Swift 中都是结构体。</li>
+</ul>
+</li>
+<li>在传递的参数前，隐含了 let。</li>
+<li>在调用方法的参数位置使用 <em> 来忽略该参数。 </em> 在 Swift 里是一种「I don’t care about this thing」的通用表达。</li>
+<li><p>「Protocol」：对结构体和类都有效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private enum Op: CustomStringConvertible&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Swift 里，可以在一个 function1 里添加另一个 function2(只在 function1 里面被调用)。 </p>
+</li>
+</ol>
+<p>&lt;未完待续&gt;</p>
 
       
     </div>
@@ -531,7 +659,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-1"><span class="nav-number">2.</span> <span class="nav-text">Lecture 1</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-1"><span class="nav-number">2.</span> <span class="nav-text">Lecture 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-2"><span class="nav-number">3.</span> <span class="nav-text">Lecture 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-3"><span class="nav-number">4.</span> <span class="nav-text">Lecture 3</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
